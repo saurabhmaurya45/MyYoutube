@@ -1,0 +1,64 @@
+{
+    "resources": [
+      {
+        "title": "Find me on Mastodon",
+        "link": "https://indieweb.social/@kendalmintcode",
+        "imageUrl": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+      },
+      {
+        "title": "Welcome to K-Tech",
+        "link": "https://k-tech.systems",
+        "imageUrl": "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg"
+      },
+      {
+        "title": "Some sort of third title",
+        "link": "https://indieweb.social/@kendalmintcode",
+        "imageUrl": "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg"
+      },
+      {
+        "title": "Super item number the last",
+        "link": "https://indieweb.social/@kendalmintcode",
+        "imageUrl": "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
+      },
+        {
+            "title": "Find me on Mastodon",
+            "link": "https://indieweb.social/@kendalmintcode",
+            "imageUrl": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+        },
+        {
+            "title": "Welcome to K-Tech",
+            "link": "https://k-tech.systems",
+            "imageUrl": "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg"
+        },
+        {
+            "title": "Some sort of third title",
+            "link": "https://indieweb.social/@kendalmintcode",
+            "imageUrl": "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg"
+        },
+        {
+            "title": "Super item number the last",
+            "link": "https://indieweb.social/@kendalmintcode",
+            "imageUrl": "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+            "title": "Find me on Mastodon",
+            "link": "https://indieweb.social/@kendalmintcode",
+            "imageUrl": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+        },
+        {
+            "title": "Welcome to K-Tech",
+            "link": "https://k-tech.systems",
+            "imageUrl": "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg"
+        },
+        {
+            "title": "Some sort of third title",
+            "link": "https://indieweb.social/@kendalmintcode",
+            "imageUrl": "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg"
+        },
+        {
+            "title": "Super item number the last",
+            "link": "https://indieweb.social/@kendalmintcode",
+            "imageUrl": "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
+        }
+    ]
+  }
