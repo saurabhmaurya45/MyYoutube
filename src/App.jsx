@@ -1,13 +1,26 @@
 import './App.css'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
-import { Outlet } from 'react-router-dom'
+import { Outlet, redirect, useNavigate } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 function App() {
   const sidebarStatus = useSelector((state) => state.sidebar.value);
+  const apiLimitExceed = useSelector((state) => state.apiLimitExceed);
+  const navigate = useNavigate();
+  // if(apiLimitExceed.apiLimit){
+  //   return (
+  //     
+  //   )
+  // }
+  useEffect(() => {
+    if(apiLimitExceed.apiLimit){
+      navigate('/limitExceed')
+    }
+  }, [apiLimitExceed.apiLimit])
 
   return (
     <Provider store={store}>
@@ -23,6 +36,7 @@ function App() {
                 </div>
                 <div className='col-span-10 ml-60 '>
                   <Outlet />
+
                 </div>
               </>
             )
@@ -36,6 +50,7 @@ function App() {
                 </div>
                 <div className='col-span-11 ml-24'>
                   <Outlet />
+
                 </div>
               </>
             )

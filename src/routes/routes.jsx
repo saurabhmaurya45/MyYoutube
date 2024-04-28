@@ -3,6 +3,9 @@ import App from "../App";
 import Index from "../pages/index";
 import Testing from "../pages/testing";
 import SingleVideo from "../pages/singleVideo";
+import SearchPage from "../pages/searchPage";
+import ApiLimitReached from "../pages/apiLimitReached";
+import ErrorPage from "../pages/errorPage";
 
 const routes = createBrowserRouter([
     {
@@ -18,11 +21,20 @@ const routes = createBrowserRouter([
                 element: <SingleVideo />
             },
             {
+                path: 'search/',
+                element: <SearchPage />
+            },
+            {
+                path: 'limitExceed/',
+                element: <ApiLimitReached />
+            },
+            {
                 path: '/testing',
                 element: <Testing />
-            }
-        ]
+            },
+        ],
 
+        errorElement : <ErrorPage />
     }
 ])
 

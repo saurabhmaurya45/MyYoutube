@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const videoDataSlice = createSlice({
+const searchDataSlice = createSlice({
     name: "videoData",
     initialState: {
         videoData: [],
@@ -11,7 +11,7 @@ const videoDataSlice = createSlice({
     },
     reducers: {
         setVideoData: (state, action) => {
-            const { items, nextPageToken, prevPageToken, pageInfo } = action.payload ? action.payload: { items: [], nextPageToken: "", prevPageToken: "",   totalResults: 0, videoLength: 0} ;
+            const { items, nextPageToken, prevPageToken, pageInfo } = action.payload?action.payload:{items:[],nextPageToken:"",prevPageToken:"",totalResults:0,videoLength:0};
             state.videoData = [...state.videoData, ...items];
             state.nextPageToken = nextPageToken || "";
             state.previousPageToken = prevPageToken || "";
@@ -32,5 +32,5 @@ const videoDataSlice = createSlice({
     },
 });
 
-export const { setVideoData, clearVideoData, popFromStart } = videoDataSlice.actions;
-export default videoDataSlice.reducer;
+export const { setVideoData, clearVideoData, popFromStart } = searchDataSlice.actions;
+export default searchDataSlice.reducer;

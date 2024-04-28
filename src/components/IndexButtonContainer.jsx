@@ -39,7 +39,6 @@ const IndexButtonContainer = () => {
         // checkButtonVisibility();
     }
     
-    console.log(scroller?.scrollWidth, scroller?.scrollLeft, scroller?.clientWidth);
     return (
         <div>
             <div className='button-parent w-[75rem] fixed'>

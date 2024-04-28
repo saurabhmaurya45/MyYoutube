@@ -2,16 +2,17 @@ import { FaBars } from "react-icons/fa6";
 import { CiSearch } from "react-icons/ci";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { MdOutlineVideoCall } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../redux/sidebarStatusSlice";
 import { GoSearch } from "react-icons/go";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { SEARCH_SUGGESTION_DATA } from "../constants/envData";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const [isSuggestionBoxOpen, setIsSuggestionBoxOpen] = useState(true);
+  const navigate = useNavigate();
+  const [isSuggestionBoxOpen, setIsSuggestionBoxOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
   const suggestionItems = [
@@ -26,9 +27,25 @@ const Header = () => {
 
   ]
 
+  const fetchSuggestionItems = async () => {
+    const response = await fetch(SEARCH_SUGGESTION_DATA+searchValue, { 
+      headers:{
+        'Access-Control-Allow-Origin': '*',
+        // 'Content-Type': 'application/json',
+        // 'Accept': 'application/json',
+        // 'Access-Control-Allow-Headers': 'Content-Type',
+        // 'Access-Control-Allow-Methods': 'GET',
+        // 'Access-Control-Allow-Credentials': 'true'
+      },
+      mode: 'cors'
+     });
+    const data = await response.json();
+    console.log(data);
+  }
+
   const onChangeHandler = (e) => {
     setSearchValue(e.target.value)
-    if (searchValue.length != 0) {
+    if (e.target.value.length != 0) {
       setIsSuggestionBoxOpen(true)
     }
     else {
@@ -39,9 +56,24 @@ const Header = () => {
   const onKeyDownHandler = (e) => {
     if (e.key === "Enter") {
       setIsSuggestionBoxOpen(false)
+      searchHandler();
     }
   }
 
+  const searchHandler = (item='') => {
+    setIsSuggestionBoxOpen(false)
+
+    navigate(`/search?q=${item.length==0?searchValue:item}`)
+    setSearchValue("")
+  }
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     fetchSuggestionItems()
+  //   }, 1000)
+
+  //   return () => clearTimeout(timer)
+  // },[searchValue])
 
   const humburgerHandler = () => {
     dispatch(toggleSidebar())
@@ -85,10 +117,12 @@ const Header = () => {
               value={searchValue}
               onChange={(e) => onChangeHandler(e)}
               onFocus={() => searchValue.length!=0 && setIsSuggestionBoxOpen(true)} 
-              onBlur={() => setIsSuggestionBoxOpen(false)}
+              // onBlur={() => setIsSuggestionBoxOpen(false)}
               onKeyDown={(e) => onKeyDownHandler(e)}
               />
-              <span className="search-icon p-2 h-10 w-14 items-center center rounded-r-full cursor-pointer bg-gray-100">
+              <span className="search-icon p-2 h-10 w-14 items-center center rounded-r-full cursor-pointer bg-gray-100"
+                onClick={()=>searchHandler()}
+              >
                 <CiSearch className="w-5 h-5 ml-2" />
               </span>
             </div>
@@ -100,7 +134,7 @@ const Header = () => {
                       return (
                         <li className="suggestion-item flex items-center hover:bg-gray-100 w-full h-8 font-semibold my-1 cursor-default" 
                         key={Math.random()*index}
-                        onClick={(e) => {setSearchValue(e.target.innerText); setIsSuggestionBoxOpen(false); console.log(e.target.innerText)}}
+                        onClick={() => { setSearchValue(item); searchHandler(item)}}
                         ><span className="mx-6 mr-3 text-base"><GoSearch /></span>{item}</li>
                       )
                     })}

@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux'
 import VideoCard from './VideoCard'
 import { useDispatch } from 'react-redux'
 import { clearVideoData, setVideoData } from '../redux/videoDataSlice'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { API_KEY, YOUTUBE_VIDEO_URL } from '../constants/envData'
 import { Shimmer } from 'react-shimmer'
+import { setApiLimit } from '../redux/apiLimitSlice'
 
 
 const VideoCardContainer = () => {
@@ -15,37 +16,52 @@ const VideoCardContainer = () => {
     const videoDataLength = useSelector((state) => state.videoData?.videoLength);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-    const [totalDataCount, setTotalDataCount] = useState(totalData ?? 6);
+    const [firstVideoCall, setFirstVideoCall] = useState(false);
 
     const fetchVideoData = async () => {
         setLoading(true);
-        const response = await fetch(YOUTUBE_VIDEO_URL + API_KEY);
-        const data = await response.json();
-        dispatch(clearVideoData())
-        dispatch(setVideoData(data))
-        setTotalDataCount(data.pageInfo.totalResults)
+        try{
+            const response = await fetch(YOUTUBE_VIDEO_URL + API_KEY);
+            const data = await response.json();
+            if(data && !data?.error){
+                dispatch(clearVideoData())
+                dispatch(setVideoData(data))
+                setFirstVideoCall(true);
+            }
+            if(data && data?.error.code === 403){
+                console.log(data.error.message)
+                dispatch(setApiLimit());
+            }
+        }
+        catch(error){
+            console.log(error);
+            
+        }
         setLoading(false);
     }
     
     const fetchMoreData = async () => {
-        console.log("inside fetch more data");
-        
-        
         setLoading(true);
-        const response = await fetch(YOUTUBE_VIDEO_URL + API_KEY + "&pageToken=" + nextPageToken);
-        const data = await response.json();
-        dispatch(setVideoData(data))
+        try{
+            const response = await fetch(YOUTUBE_VIDEO_URL + API_KEY + "&pageToken=" + nextPageToken);
+            const data = await response.json();
+            if(data && !data?.error){
+                dispatch(setVideoData(data))
+            }
+            if(data && data.error.code === 403){
+                console.log(data.error.message)
+                dispatch(setApiLimit());
+            }
+        }
+        catch(error){
+            console.log(error);
+            
+        }
         setLoading(false);
     }
 
     const handleScroll = () => {
         if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-            console.log("inside scroll");
-            console.log(totalDataCount, "inside scroll");
-            console.log(videoDataLength, "inside fetch more data");
-            console.log(totalData, "inside fetch more data");
-            console.log(nextPageToken, "inside fetch more data");
-            console.log(videoDataLength >= totalData);
             if(videoDataLength >= totalData)
             {
                 return;
@@ -57,18 +73,14 @@ const VideoCardContainer = () => {
     }
 
     useEffect(() => {
-        fetchVideoData();
+        !firstVideoCall && fetchVideoData();
         window.addEventListener('scroll', handleScroll);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
         }
-    }, [])
-    console.log(totalDataCount,"outside scroll");
-    console.log(videoDataLength,"outside fetch more data");
-    console.log(totalData,"outside fetch more data");
-    console.log(nextPageToken,"outside fetch more data");
-    console.log(videoDataLength >= totalData,"outside fetch more data");
+    }, [nextPageToken,videoDataLength])
+
     return (
         <>
             <div className='flex flex-wrap'>
@@ -78,7 +90,8 @@ const VideoCardContainer = () => {
                 {
                     loading &&
                     (
-                        <div className='flex justify-evenly rounded-lg flex-wrap m-3'>
+                        <div className='flex justify-evenly rounded-lg flex-wrap m-3 -z-10'>
+                            <Shimmer width={340} height={300} />
                             <Shimmer width={340} height={300} />
                             <Shimmer width={340} height={300} />
                             <Shimmer width={340} height={300} />

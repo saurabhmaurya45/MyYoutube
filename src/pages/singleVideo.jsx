@@ -35,7 +35,6 @@ const SingleVideo = () => {
     fetchVideoData()
     fetchCommentData()
   }, [])
-  console.log(video?.snippet);
   return (
     <div className='mx-12 my-4 p-1'>
       <div className='flex'>

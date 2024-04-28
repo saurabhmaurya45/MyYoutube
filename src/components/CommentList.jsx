@@ -5,10 +5,10 @@ const CommentList = ({ commentList }) => {
     return (
         <div>
             {
-                commentList?.map((comment) => {
+                commentList?.map((comment,index) => {
                     return (
                         <>
-                            <SingleComment comment={comment} key={comment.id} />
+                            <SingleComment comment={comment} key={comment.id+index} />
                             <div className='comment-replies ml-16'>
                                 <CommentList commentList={comment.replies?.comments} />
                             </div>
