@@ -3,7 +3,7 @@
 const Footer = () => {
   return (
     <>
-      <div id="footer" className=" ">
+      <div id="footer" className="hidden md:block ">
         <div className="  text-[.75rem] font-medium  text-[#606060] flex flex-wrap m-2 my-4 ">
           <a className="px-2" href="https://www.youtube.com/about/" >About</a>
           <a className="px-2" href="https://www.youtube.com/about/press/" >Press</a>

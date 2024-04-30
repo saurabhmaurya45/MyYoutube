@@ -13,7 +13,7 @@ const Sidebar = () => {
     <>
       {sidebarStatus===1 && (
         <>
-          <div className="sidebar mx-3 ">
+          <div className="sidebar mx-3 hidden md:block  ">
             <div className="sidebar__main">
               {sidebarMenuData.map((menu, index) => (
                 <div key={index}>
@@ -54,7 +54,7 @@ const Sidebar = () => {
       }
       {sidebarStatus===2 && (
         <>
-          <div className="sidebar mx-1 ">
+          <div className="sidebar mx-1 hidden md:block">
             <div className="sidebar__main">
               {sidebarMenuData2.map((menu, index) => (
                 <Link to={menu.path} key={index}>

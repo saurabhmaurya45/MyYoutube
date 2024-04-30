@@ -17,7 +17,7 @@ function App() {
   //   )
   // }
   useEffect(() => {
-    if(apiLimitExceed.apiLimit){
+    if (apiLimitExceed.apiLimit) {
       navigate('/limitExceed')
     }
   }, [apiLimitExceed.apiLimit])
@@ -31,12 +31,11 @@ function App() {
             sidebarStatus === 1 &&
             (
               <>
-                <div className="col-span-2  fixed left-0  overflow-y-scroll w-[16%]   mb-10 overflow-x-clip sidebar_height" >
+                <div className="hidden md:block md:col-span-2  fixed left-0  overflow-y-scroll w-[16%]   mb-10 overflow-x-clip sidebar_height" >
                   <Sidebar />
                 </div>
-                <div className='col-span-10 ml-60 '>
+                <div className='col-span-12 md:col-span-10 md:ml-60 '>
                   <Outlet />
-
                 </div>
               </>
             )
@@ -45,10 +44,10 @@ function App() {
             sidebarStatus === 2 &&
             (
               <>
-                <div className="col-span-1 fixed left-0  overflow-y-scroll  w-[6%]  mb-10 overflow-x-clip sidebar_height" >
+                <div className="hidden md:block md:col-span-2 fixed left-0  overflow-y-scroll  w-[6%]  mb-10 overflow-x-clip sidebar_height" >
                   <Sidebar />
                 </div>
-                <div className='col-span-11 ml-24'>
+                <div className='col-span-12 md:col-span-11  md:ml-24'>
                   <Outlet />
 
                 </div>
@@ -59,7 +58,7 @@ function App() {
             sidebarStatus === 3 &&
             (
               <>
-                <div className='col-span-12'>
+                <div className='md:col-span-12 w-full '>
                   <Outlet />
                 </div>
               </>

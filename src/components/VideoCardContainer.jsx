@@ -23,6 +23,7 @@ const VideoCardContainer = () => {
         try{
             const response = await fetch(YOUTUBE_VIDEO_URL + API_KEY);
             const data = await response.json();
+            
             if(data && !data?.error){
                 dispatch(clearVideoData())
                 dispatch(setVideoData(data))
