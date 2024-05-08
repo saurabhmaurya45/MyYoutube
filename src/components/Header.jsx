@@ -3,46 +3,47 @@ import { CiSearch } from "react-icons/ci";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { MdOutlineVideoCall } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "../redux/sidebarStatusSlice";
 import { GoSearch } from "react-icons/go";
 import { useEffect, useState } from "react";
 import { SEARCH_SUGGESTION_DATA } from "../constants/envData";
 import { PiArrowLeftLight } from "react-icons/pi";
+import axios from "axios";
+import axiosJsonp from 'axios-jsonp';
+import { setSuggestionData } from "../redux/searchSuggestionSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const suggestionData = useSelector(state => state.searchSuggestion.suggestionData)
   const [isSuggestionBoxOpen, setIsSuggestionBoxOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searchShowMobile, setSearchShowMobile] = useState(false);
+  const [suggestionItems, setSuggestionItems] = useState([])
 
-  const suggestionItems = [
-    "aksay saini react js interview",
-    "aksay saini",
-    "aksay saini interview",
-    "aksay saini react js",
-    "javascript by askay saini",
-    "react js by askay saini",
-    "debouncing in react js by askay saini",
-    "throttling in react js by askay saini",
-
-  ]
-
-  const fetchSuggestionItems = async () => {
-    const response = await fetch(SEARCH_SUGGESTION_DATA + searchValue, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        // 'Content-Type': 'application/json',
-        // 'Accept': 'application/json',
-        // 'Access-Control-Allow-Headers': 'Content-Type',
-        // 'Access-Control-Allow-Methods': 'GET',
-        // 'Access-Control-Allow-Credentials': 'true'
-      },
-      mode: 'cors'
-    });
-    const data = await response.json();
-    console.log(data);
+  const fetchSuggestionItems = () => {
+    const GOOGLE_AC_URL = `https://clients1.google.com/complete/search`;
+    return axios({
+      url: GOOGLE_AC_URL,
+      adapter: axiosJsonp,
+      params: {
+        client: "youtube",
+        hl: "en",
+        ds: "yt",
+        q: searchValue,
+      }
+    })
+      .then((res) => {
+        if (res.status !== 200) {
+          throw Error("Suggest API not 200!");
+        }
+        const data = res.data[1].map((item) => item[0]);
+        setSuggestionItems(data);
+        const suggestionData = {};
+        suggestionData[searchValue] = data;
+        dispatch(setSuggestionData(suggestionData));
+      })
   }
 
   const onChangeHandler = (e) => {
@@ -69,18 +70,25 @@ const Header = () => {
     setSearchValue("")
   }
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     fetchSuggestionItems()
-  //   }, 1000)
+  useEffect(() => {
 
-  //   return () => clearTimeout(timer)
-  // },[searchValue])
+    const timer = setTimeout(() => {
+      if (suggestionData[searchValue]) {
+        setSuggestionItems(suggestionData[searchValue])
+      }
+      else {
+        fetchSuggestionItems()
+      }
+    }, 1000)
+
+
+    return () => clearTimeout(timer)
+  }, [searchValue])
 
   const humburgerHandler = () => {
     dispatch(toggleSidebar())
   }
-
+console.log(suggestionData);
   return (
     <>
       <header className="header px-4  pt-3 pb-1 fixed w-[100%] top-0 items-center bg-white z-10 hidden md:block">
@@ -154,7 +162,7 @@ const Header = () => {
                 <IoIosNotificationsOutline className="w-6 h-6 mx-2" />
               </div>
               <div className="user-icon p-2 cursor-pointer  ">
-                <img className="rounded-full w-8 h-8 border  border-blue-500" alt="user-icon" src="https://yt3.ggpht.com/yti/ANjgQV_ITKYwuwDcwtaNafte-4q6SKs5gX4ORc06JprN0FtxiqRK=s88-c-k-c0x00ffffff-no-rj" />
+                <img className="rounded-full w-8 h-8 border  border-blue-500" alt="user-icon" src="https://i.pngimg.me/thumb/f/720/m2i8d3i8N4d3N4K9.jpg" />
               </div>
 
             </div>
@@ -164,7 +172,7 @@ const Header = () => {
       </header>
       <header className="header mobile-header px-2  pt-3 pb-1 fixed w-full top-0 items-center bg-white z-10 md:hidden shadow ">
         <div className="grid grid-cols-12">
-          <div className={"col-span-6 items-center "+(searchShowMobile?"hidden":"flex")}>
+          <div className={"col-span-6 items-center " + (searchShowMobile ? "hidden" : "flex")}>
             <div className="header_icon p-2 cursor-pointer" onClick={() => { humburgerHandler() }}>
               <FaBars className="w-5 h-5" />
             </div>
@@ -192,9 +200,9 @@ const Header = () => {
               </div>
             </Link>
           </div>
-          <div className={"col-span-12 py-2 "+(searchShowMobile?"block":"hidden")}>
+          <div className={"col-span-12 py-2 " + (searchShowMobile ? "block" : "hidden")}>
             <div className="flex items-center">
-              <div className="mx-2 mr-5 text-2xl font-bold cursor-pointer" onClick={()=>setSearchShowMobile(!searchShowMobile)}>
+              <div className="mx-2 mr-5 text-2xl font-bold cursor-pointer" onClick={() => setSearchShowMobile(!searchShowMobile)}>
                 <PiArrowLeftLight />
               </div>
               <div className="search-bar flex items-center justify-center">
@@ -230,13 +238,13 @@ const Header = () => {
             </div>}
 
           </div>
-          <div className={"col-span-6  "+(searchShowMobile?"hidden":"block")}>
+          <div className={"col-span-6  " + (searchShowMobile ? "hidden" : "block")}>
             <div className="flex justify-end items-center  ">
-              <div className="notification-icon p-2 cursor-pointer" onClick={()=>setSearchShowMobile(!searchShowMobile)}>
+              <div className="notification-icon p-2 cursor-pointer" onClick={() => setSearchShowMobile(!searchShowMobile)}>
                 <CiSearch className="w-6 h-6 mx-2" />
               </div>
               <div className="user-icon p-2 cursor-pointer  ">
-                <img className="rounded-full w-8 h-8 border  border-blue-500" alt="user-icon" src="https://yt3.ggpht.com/yti/ANjgQV_ITKYwuwDcwtaNafte-4q6SKs5gX4ORc06JprN0FtxiqRK=s88-c-k-c0x00ffffff-no-rj" />
+                <img className="rounded-full w-8 h-8 border  border-blue-500" alt="user-icon" src="https://i.pngimg.me/thumb/f/720/m2i8d3i8N4d3N4K9.jpg" />
               </div>
             </div>
           </div>

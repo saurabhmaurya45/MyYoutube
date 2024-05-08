@@ -28,10 +28,10 @@ const routes = createBrowserRouter([
                 path: 'limitExceed/',
                 element: <ApiLimitReached />
             },
-            {
-                path: '/testing',
-                element: <Testing />
-            },
+            // {
+            //     path: '/testing',
+            //     element: <Testing />
+            // },
         ],
 
         errorElement : <ErrorPage />

@@ -40,7 +40,7 @@ const IndexButtonContainer = () => {
         }
         // checkButtonVisibility();
     }
-    
+
     return (
         <div>
             <div className={'button-parent w-[100%]  md:m-0  fixed flex justify-center  '+(sidebarStatus==1?"md:w-[85%]":"md:w-[94%]")}>

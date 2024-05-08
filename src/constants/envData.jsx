@@ -1,4 +1,4 @@
-export const API_KEY = "AIzaSyBDZPR2036aUIndTjhRN79KVkDaRIppVBE"
+export const API_KEY = import.meta.env.VITE_API_KEY
 
 export const PAGE_OFFSET_VIDEO_DATA = 25
 

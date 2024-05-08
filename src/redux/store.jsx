@@ -4,6 +4,7 @@ import videoDataSlice from "./videoDataSlice";
 import liveCommentDataSlice from "./liveCommentDataSlice";
 import searchDataSlice from './searchDataSlice';
 import apiLimitSlice from './apiLimitSlice';
+import searchSuggestionSlice from "./searchSuggestionSlice";
 
 const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
         liveComment : liveCommentDataSlice,
         searchData : searchDataSlice,
         apiLimitExceed: apiLimitSlice,
+        searchSuggestion: searchSuggestionSlice
     }
     
 });

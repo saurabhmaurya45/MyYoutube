@@ -55,7 +55,7 @@ const SingleVideo = () => {
           <div className='video-title rounded-xl mb-4 text-wrap'>
             <h1 className='text-xl font-bold '>{video?.snippet.title}</h1>
           </div>
-          <div className='video-description bg-gray-100 rounded-xl mb-4 '>
+          <div className='video-description bg-gray-100 rounded-xl mb-4 pb-4 '>
             <div className={!readMore ? 'line-clamp-5' : ''}>
               <p className='text-sm p-4'><span className='font-bold '>{video?.statistics.viewCount} Views {dateToDays(video?.snippet.publishedAt)} days ago</span> <br/><br/> {formatDescription(video?.snippet.description || "")}</p>
             </div>

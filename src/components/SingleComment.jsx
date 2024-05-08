@@ -9,14 +9,14 @@ const SingleComment = ({ comment }) => {
 
     return (
         <div className='single-comment flex  mt-5 w-full'>
-            <div className={'channel-logo '+topLevel?" w-[8%]":" w-[4%]"}>
+            <div className={'channel-logo '+topLevel?" w-[16%] md:w-[8%]":" md:w-[4%]"}>
                 <a href={commentData.snippet.authorChannelUrl} target='_blank' rel='noreferrer'>
                     <div className='logo p-2 cursor-pointer  '>
                         <img className={'rounded-full '+(topLevel?" w-12 h-12 ":" w-8 h-8 ")+ ' border'} src={commentData.snippet.authorProfileImageUrl } alt='logo' />
                     </div>
                 </a>
             </div>
-            <div className={'comment-details '+topLevel?" w-[92%]":" w-[96%]"}>
+            <div className={'comment-details '+topLevel?" w-[84%] md:w-[92%]":" md:w-[96%]"}>
                 <a href={commentData.snippet.authorChannelUrl} target='_blank' rel='noreferrer'>
                     <div className='comment-user font-semibold text-sm'> {commentData.snippet.authorDisplayName} {dateToDays(commentData.snippet.publishedAt)} days ago</div>
                 </a>
