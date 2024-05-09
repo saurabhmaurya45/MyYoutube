@@ -23,22 +23,22 @@ MyYouTube is a dynamic web application that leverages the YouTube API to provide
 
 ## 🍕 Features:
 
-- **YouTube API Integration**: Access YouTube's extensive video library directly within the application.
-- **Infinite Scroll**: Seamlessly browse through an endless stream of videos without interruption.
-- **Scrollable Button List**: Conveniently navigate through various options with a scrollable button list.
-- **Optimized Live Chat**: Engage with a live chat feature, optimized for performance, with simulated data.
-- **N-Level Comment System**: Dive deep into discussions with an intuitive N-level comment system.
-- **Search Feature**: Quickly find your desired videos with the search feature.
-- **Search Optimization**: Enhance search functionality with caching and debouncing techniques.
-- **Responsive Design**: Enjoy a consistent browsing experience across devices with mobile responsiveness.
+✅ **YouTube API Integration**: Access YouTube's extensive video library directly within the application.  
+✅ **Infinite Scroll**: Seamlessly browse through an endless stream of videos without interruption.  
+✅ **Scrollable Button List**: Conveniently navigate through various options with a scrollable button list.  
+✅ **Optimized Live Chat**: Engage with a live chat feature, optimized for performance, with simulated data.  
+✅ **N-Level Comment System**: Dive deep into discussions with an intuitive N-level comment system.  
+✅ **Search Feature**: Quickly find your desired videos with the search feature.  
+✅ **Search Optimization**: Enhance search functionality with caching and debouncing techniques.  
+✅ **Responsive Design**: Enjoy a consistent browsing experience across devices with mobile responsiveness.
 
 ## ⚙ Technology Used:
 
-- **React**: A JavaScript library for building user interfaces.
-- **Redux**: A predictable state container for JavaScript apps.
-- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-- **React Router v6**: Declarative routing for React applications.
-- **Git & GitHub**: Version control and collaboration platform for software development.
+✅ **React**: A JavaScript library for building user interfaces.  
+✅ **Redux**: A predictable state container for JavaScript apps.  
+✅ **Tailwind CSS**: A utility-first CSS framework for rapid UI development.  
+✅ **React Router v6**: Declarative routing for React applications.  
+✅ **Git & GitHub**: Version control and collaboration platform for software development.
 
 ## 🚀 Getting Started:
 
