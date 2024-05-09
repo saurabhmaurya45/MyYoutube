@@ -1,9 +1,18 @@
 # MyYouTube
-<img width="480" alt="Screenshot 2024-05-09 at 12 42 31 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/3e705fa0-3bfb-4916-9ad3-0be034668e55" style="display: inline-block; margin: 5px;">
-<img width="480" alt="Screenshot 2024-05-09 at 12 43 03 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/d8aa6dba-b3b3-4812-bee1-5b73c9d1c959" style="display: inline-block; margin: 5px;">
-<img width="480" alt="Screenshot 2024-05-09 at 12 43 16 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/c37e9732-9ca6-4378-8c78-54c87752ec17" style="display: inline-block; margin: 5px;">
-<img width="480" alt="Screenshot 2024-05-09 at 12 43 27 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/2353b0ea-fda2-4f58-b552-1240c4d4157b" style="display: inline-block; margin: 5px;">
-<img width="480" alt="Screenshot 2024-05-09 at 12 43 36 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/4eac199c-5105-4b85-901a-b2f91363fd97" style="display: inline-block; margin: 5px;">
+<div style="text-align: center;">
+    <img width="45%" alt="Screenshot 2024-05-09 at 12 42 31 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/3e705fa0-3bfb-4916-9ad3-0be034668e55" style="display: inline-block; margin: 2.5%;">
+    <img width="45%" alt="Screenshot 2024-05-09 at 12 43 03 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/d8aa6dba-b3b3-4812-bee1-5b73c9d1c959" style="display: inline-block; margin: 2.5%;">
+</div>
+
+<div style="text-align: center;">
+    <img width="45%" alt="Screenshot 2024-05-09 at 12 43 16 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/c37e9732-9ca6-4378-8c78-54c87752ec17" style="display: inline-block; margin: 2.5%;">
+    <img width="45%" alt="Screenshot 2024-05-09 at 12 43 27 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/2353b0ea-fda2-4f58-b552-1240c4d4157b" style="display: inline-block; margin: 2.5%;">
+</div>
+
+<div style="text-align: center;">
+    <img width="45%" alt="Screenshot 2024-05-09 at 12 43 36 PM" src="https://github.com/saurabhmaurya45/MyYoutube/assets/58826197/4eac199c-5105-4b85-901a-b2f91363fd97" style="display: inline-block; margin: 2.5%;">
+</div>
+
 
 
 
